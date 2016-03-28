@@ -262,6 +262,10 @@ public class AutoCompleteContactTextView extends AutoCompleteTextView implements
                 if (p.getPicture() != null) {
                     iv.setImageBitmap(p.getPicture());
                     iv.setVisibility(View.VISIBLE);
+                } else {
+                    // This resets the photo drawable for contacts with no photos so that they don't adopt photos of other contacts.
+                    // Without this, photos of certain contacts appear for contacts without a photo.
+                    iv.setImageResource(android.R.drawable.ic_delete);
                 }
             }
             return v;
